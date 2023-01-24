@@ -6,14 +6,35 @@ import Members, { membersData } from './Member';
 import Tip from './Tip';
 import { FontAwesome } from '@expo/vector-icons';
 import { useState } from 'react';
+import { LinearGradient } from 'expo-linear-gradient';
 
 // create a component
 const NewBill = () => {
     const [friends, setFriends] = useState(membersData)
     const [selectedMembers, setSelectedMember] = useState([])
-    const [name, setNative] = useState()
+    const [name, setName] = useState()
     const [showSuggestion, setSuggestion] = useState(false)
+    const [memberCount, setMemberCount] = useState(0)
+    const [amount, setAmount] = useState()
+    const [tip, setTip] = useState(0)
+    const [tipPerPerson, setTipPerperson] = useState(0)
+    const [totalPerPerson, setTotalPerperson] = useState(0)
+    const tipPercentage = [10, 20, 30, 40, 50]
+    const [selectedTip, setSelectedTip] = useState(0)
 
+    const calculatebill = async (amnt) => {
+        let total = 0
+        console.log(memberCount);
+        console.log(selectedTip);
+        let totalTip = 0
+        if (amnt => 1) {
+            total = amnt / memberCount
+            totalTip = amnt * selectedTip/100
+            setTipPerperson(totalTip/memberCount)
+            setTotalPerperson(total)
+
+        }
+    }
 
     const handleOnChange = async (e) => {
         let value = e;
@@ -34,61 +55,93 @@ const NewBill = () => {
         const searchTerm = keyword.toLowerCase()
         return array.filter(value => {
             return value['username'].toLowerCase().match(new RegExp(searchTerm, 'g'))
-            //  value['avatar'].toLowerCase().match(new RegExp(searchTerm, 'g'))
         })
     }
+
+    const onMemberClick = () => {
+        setSuggestion(false)
+        setName('')
+        setMemberCount(selectedMembers.length + 1)
+        calculatebill(amount)
+    }
+    const TipComponent = (percentage) => {
+        return (
+                <View style={{ flexDirection: "row", display: 'flex', }}>
+                    <View style={{ flexDirection: "row", display: 'flex', }}>
+                        <TouchableOpacity style={styles.tip} onPress={() => {setSelectedTip(Number(percentage.item)),calculatebill(amount)}}>
+                            <Text style={styles.text}>{percentage.item}</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            )
+    }
+
     const Members = (item) => {
-        // console.log(item.item.username);
         return (
             <View>
                 <TouchableOpacity
                     style={styles.friendSuggestion}
-                    onPress={() => setSelectedMember([...selectedMembers,item.item.avatar])}>
-                    {/* <Text>Members</Text> */}
-                    {/* <Image source={item.item.avatar}
-                        style={styles.image}
-                        resizeMode="cover" /> */}
+                    onPress={() => { onMemberClick(), setSelectedMember([...selectedMembers, item.item.avatar]) }}>
                     <Text style={{ marginRight: 10 }} >{item.item.username}</Text>
                     <AntDesign name="pluscircleo" size={18} color="black" />
                 </TouchableOpacity>
-                {/* <Image source={item.item.avatar}
-                    style={styles.image}
-                    resizeMode="cover" /> */}
             </View>
-
-
         );
     };
 
-    const Selected = () => {
-
-        //     return(
-        //         <View>
-        //      {selectedMembers.map(member => (
-        //          <Image source={member.avatar}
-        //              style={styles.image}
-        //              resizeMode="cover"/> 
-        // ))}
-        //         </View>
-
-        // <Text>{selectedMembers.username}</Text>
-        // )
-
-        // console.log(selectedMembers);
-
-    }
-
     return (
         <View style={styles.container}>
+            <LinearGradient
+            style={styles.totalResults}
+        // Button Linear Gradient
+        colors={['#085EB9','#0093E9', '#80D0C7']}
+        >
+            <View >
+            
+                <Text style={{fontWeight:'300',color:'white',alignSelf:'center',marginTop:-20,marginBottom:20,fontSize:24}}>Balance</Text>
+                <View style={styles.resultTextView}>
+                    <View>
+                        <Text style={styles.resultText}>
+                            Tip amount
+                        </Text>
+                        <Text style={{ color: 'white', fontWeight: '100' }}>
+                            /person
+                        </Text>
+
+
+                    </View>
+                    <Text style={{ fontSize: 24, color: 'white',fontWeight:'300'}}>R {tipPerPerson}</Text>
+                </View>
+                <View style={styles.resultTextView}>
+                    <View>
+                        <Text style={styles.resultText}>
+                            Total amount
+                        </Text>
+                        <Text style={{ color: 'white', fontWeight: '100' }}>
+                            /person
+                        </Text>
+                    </View>
+                    <Text style={{ fontSize: 24, color: 'white',fontWeight: '300' }}>R {totalPerPerson}</Text>
+                </View>
+                <View style={styles.resultTextView}>
+                    <View>
+                        <Text style={styles.resultText}>
+                            Total Pay
+                        </Text>
+                        <Text style={{ color: 'white', fontWeight: '100' }}>
+                            /person
+                        </Text>
+                    </View>
+                    <Text style={{ fontSize: 24, color: 'white',fontWeight: '300' }}>R {totalPerPerson + tipPerPerson}</Text>
+                </View>
+                
+            </View>
+            </LinearGradient>
 
             <View style={styles.inputContainer}>
                 <Text style={styles.text}>ADD MEMBERS</Text>
                 <View style={styles.members}>
-                    <TextInput name="search" id="search" onChangeText={text => handleOnChange(text)} style={[styles.input, { flex: 4 }]} placeholder='Name' />
-
-                    <TouchableOpacity >
-                        <AntDesign name="adduser" size={24} color="#085EB9" style={{ flex: 1, alignSelf: 'center', alignItems: 'center', margin: 16 }} />
-                    </TouchableOpacity>
+                    <TextInput name="search" value={name} id="search" onChangeText={text => { handleOnChange(text), setName(text) }} style={[styles.input, { flex: 1, marginBottom: 4 }]} placeholder='enter member' />
                 </View>
                 <View style={{ flexDirection: 'row' }}>
 
@@ -101,51 +154,27 @@ const NewBill = () => {
                         </View>
                     ))}
                 </View>
-                <View style={{flexDirection:'row',flexWrap:'wrap'}}>
-                    {selectedMembers.map((members) => (
-                       
-                        <Image source={members}
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginBottom: 16 }}>
+                    {selectedMembers.map((members,index) => (
+
+                        <Image key={index} source={members}
                             style={styles.image}
                             resizeMode="cover" />
-                    ) ) }
+                    ))}
                 </View>
-
                 <Text style={styles.text}>AMOUNT</Text>
-                <TextInput style={styles.input} placeholder='enter total amount' />
+                <TextInput style={styles.input} keyboardType='numeric' placeholder='enter total amount' onChangeText={(text) => { setAmount(Number(text)), calculatebill(text) }} />
                 <Text style={styles.text}>TIP</Text>
-                <Tip></Tip>
-
-
-            </View>
-            <View style={styles.totalResults}>
-                <View style={styles.resultTextView}>
-                    <View>
-                        <Text style={styles.resultText}>
-                            Tip amount
-                        </Text>
-                        <Text style={{ color: 'white', fontWeight: '100' }}>
-                            /person
-                        </Text>
-
-
-                    </View>
-                    <Text style={{ fontSize: 26, color: 'white' }}>R 0.0</Text>
+                <View style={{flexDirection:"row"}}>
+                    {
+                         tipPercentage.map((percentage, index) =>(
+                            <TipComponent key={index} item={percentage}></TipComponent>
+                         ))
+                    }
                 </View>
-                <View style={styles.resultTextView}>
-                    <View>
-                        <Text style={styles.resultText}>
-                            Total amount
-                        </Text>
-                        <Text style={{ color: 'white', fontWeight: '100' }}>
-                            /person
-                        </Text>
-                    </View>
-                    <Text style={{ fontSize: 26, color: 'white' }}>R 0.0</Text>
-                </View>
-
-                <View></View>
-
             </View>
+
+            
 
         </View>
     );
@@ -195,14 +224,24 @@ const styles = StyleSheet.create({
     },
     totalResults: {
         margin: 16,
+        marginTop:40,
         backgroundColor: '#085EB9',
+//         background-color: #0093E9;
+// background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+
         borderRadius: 6,
-        flex: 1
+        flex: 1.5,
+        padding:10,
+        // marginBottom:60,
+        // alignContent:'center',
+        justifyContent:'center'
+        // alignItems:'center',
+        // alignSelf:'center'
     },
     resultTextView: {
-        marginBottom: 10,
-        marginTop: 10,
-        padding: 16,
+        // marginBottom: 10,
+        // marginTop: 10,
+        padding: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignContent: 'center',
@@ -211,7 +250,8 @@ const styles = StyleSheet.create({
     },
     resultText: {
         color: 'white',
-        fontSize: 18,
+        fontSize: 16,
+        fontWeight:'400'
     },
     totalAmount: {
         fontSize: 24
@@ -220,15 +260,11 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
         borderRadius: 100,
-        // marginBottom:10,
-        // marginLeft: -10,
-        // flexDirection: 'row',
-        // marginBottom:16,
-        margin:3,
+        margin: 3,
         alignContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',
-        padding:5
+        padding: 5
     },
     friendSuggestion: {
         flexDirection: 'row',
@@ -238,8 +274,23 @@ const styles = StyleSheet.create({
         alignItems: "center",
         alignContent: 'center',
         padding: 10
-    }
+    },
+    tip: {
+        width: 60,
+        height: 40,
+        borderRadius: 6,
+        backgroundColor: 'white',
+        borderColor: '#085EB9',
+        borderWidth: 1,
+        margin: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: "row"
+        // ,backgroundColor
+    },
+    header:{
 
+    }
 
 });
 

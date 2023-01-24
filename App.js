@@ -9,7 +9,7 @@ export default function App() {
   return (
     <NavigationContainer styles={styles.container}>
     <Stack.Navigator styles={{backgroundColor:'white'}}>
-      <Stack.Screen name="NewBill" component={NewBill} options={{title:'New Bill'}}/>
+      <Stack.Screen name="NewBill" component={NewBill} options={{headerShown:false}}/>
     </Stack.Navigator>
   </NavigationContainer>
   );
