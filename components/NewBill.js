@@ -15,7 +15,7 @@ const NewBill = () => {
     const [name, setName] = useState()
     const [showSuggestion, setSuggestion] = useState(false)
     const [memberCount, setMemberCount] = useState(0)
-    const [amount, setAmount] = useState()
+    const [amount, setAmount] = useState(0)
     const [tip, setTip] = useState(0)
     const [tipPerPerson, setTipPerperson] = useState(0)
     const [totalPerPerson, setTotalPerperson] = useState(0)
@@ -25,14 +25,18 @@ const NewBill = () => {
     const calculatebill = async (amnt) => {
         let total = 0
         console.log(memberCount);
+        console.log("calculating bill");
         console.log(selectedTip);
         let totalTip = 0
-        if (amnt => 1) {
+        if (amnt != 0) {
             total = amnt / memberCount
             totalTip = amnt * selectedTip/100
             setTipPerperson(totalTip/memberCount)
             setTotalPerperson(total)
 
+        }else{
+            setTipPerperson(0)
+            setTotalPerperson(0)
         }
     }
 
@@ -58,10 +62,11 @@ const NewBill = () => {
         })
     }
 
-    const onMemberClick = () => {
+    const onMemberClick =  async () => {
+        setMemberCount(selectedMembers.length + 1)
+        console.log("clicked");
         setSuggestion(false)
         setName('')
-        setMemberCount(selectedMembers.length + 1)
         calculatebill(amount)
     }
     const TipComponent = (percentage) => {
