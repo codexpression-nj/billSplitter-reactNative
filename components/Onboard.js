@@ -29,9 +29,10 @@ const OnBoarding = () => {
         DotComponent={DotComponent}
         pages={[
           {
-            backgroundColor: "#fff",
+            backgroundColor: "#085EB9",
             image: (
               <Image
+              style={{width: 172,height: 172,resizeMode: 'contain'}}
                 source={{
                   uri: "https://previews.123rf.com/images/irfanfirdaus/irfanfirdaus2003/irfanfirdaus200300016/143492365-vector-illustration-mobile-online-shopping-women-shop-online-with-smartphone-mobile-shopping-concept.jpg",
                 }}
@@ -43,13 +44,14 @@ const OnBoarding = () => {
               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, voluptate!.",
           },
           {
-            backgroundColor: "#fff",
+            backgroundColor: "#085EB9",
             image: (
               <Image
+              style={{width: 172,height: 172,resizeMode: 'contain'}}
                 source={{
                   uri: "https://cdn.dribbble.com/users/1458982/screenshots/4291206/sign-in-dribble.png?compress=1&resize=400x300&vertical=top",
                 }}
-                className="w-72 h-72 object-contain"
+                // className="w-72 h-72 object-contain"
               />
             ),
             title: "All you need in One PLace",
@@ -57,9 +59,10 @@ const OnBoarding = () => {
               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, voluptate!.",
           },
           {
-            backgroundColor: "#fff",
+            backgroundColor: "#085EB9",
             image: (
               <Image
+              style={{width: 172,height: 172,resizeMode: 'contain'}}
                 source={{
                   uri: "https://thumbs.dreamstime.com/b/woman-shopping-sales-happy-young-holding-paper-bags-enjoying-126694001.jpg",
                 }}
