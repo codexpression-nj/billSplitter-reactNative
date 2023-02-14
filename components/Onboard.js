@@ -29,13 +29,11 @@ const OnBoarding = () => {
         DotComponent={DotComponent}
         pages={[
           {
-            backgroundColor: "#085EB9",
+            backgroundColor: "#ffffff",
             image: (
               <Image
-              style={{width: 172,height: 172,resizeMode: 'contain'}}
-                source={{
-                  uri: "https://previews.123rf.com/images/irfanfirdaus/irfanfirdaus2003/irfanfirdaus200300016/143492365-vector-illustration-mobile-online-shopping-women-shop-online-with-smartphone-mobile-shopping-concept.jpg",
-                }}
+              style={{width: 272,height: 372,resizeMode: 'cover'}}
+                source={require('../assets/onBoard1.png')}
                 className="w-72 h-72 object-contain"
               />
             ),
@@ -47,10 +45,9 @@ const OnBoarding = () => {
             backgroundColor: "#085EB9",
             image: (
               <Image
-              style={{width: 172,height: 172,resizeMode: 'contain'}}
-                source={{
-                  uri: "https://cdn.dribbble.com/users/1458982/screenshots/4291206/sign-in-dribble.png?compress=1&resize=400x300&vertical=top",
-                }}
+              style={{width: 272,height: 372,resizeMode: 'cover'}}
+                source= {require('../assets/onBoard3.png')}
+             
                 // className="w-72 h-72 object-contain"
               />
             ),
@@ -59,13 +56,12 @@ const OnBoarding = () => {
               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, voluptate!.",
           },
           {
-            backgroundColor: "#085EB9",
+            backgroundColor: "#ffffff",
             image: (
               <Image
-              style={{width: 172,height: 172,resizeMode: 'contain'}}
-                source={{
-                  uri: "https://thumbs.dreamstime.com/b/woman-shopping-sales-happy-young-holding-paper-bags-enjoying-126694001.jpg",
-                }}
+              style={{width: 272,height: 372,resizeMode: 'cover'}}
+                source= {require('../assets/onBoard2.png')}
+                
                 className="w-72 h-72 object-contain"
               />
             ),
