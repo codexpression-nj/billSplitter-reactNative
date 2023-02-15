@@ -24,8 +24,8 @@ const OnBoarding = () => {
       };
     return (
         <Onboarding
-        onSkip={() => navigation.replace("NewBill")}
-        onDone={() => navigation.replace("NewBill")}
+        onSkip={() => navigation.replace("signIn")}
+        onDone={() => navigation.replace("signIn")}
         DotComponent={DotComponent}
         pages={[
           {
@@ -37,9 +37,9 @@ const OnBoarding = () => {
                 className="w-72 h-72 object-contain"
               />
             ),
-            title: "Happy Shopping",
+            title: "Order",
             subtitle:
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, voluptate!.",
+            "add menu price on the app"
           },
           {
             backgroundColor: "#085EB9",
@@ -51,9 +51,9 @@ const OnBoarding = () => {
                 // className="w-72 h-72 object-contain"
               />
             ),
-            title: "All you need in One PLace",
+            title: "Split",
             subtitle:
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, voluptate!.",
+              "split equally and add tip on the total bill amount",
           },
           {
             backgroundColor: "#ffffff",
@@ -65,9 +65,9 @@ const OnBoarding = () => {
                 className="w-72 h-72 object-contain"
               />
             ),
-            title: "Happy Sale, Happy Customer",
+            title: "Pay",
             subtitle:
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, voluptate!.",
+              "Each person pay equal amont of the order",
           },
         ]}
       />

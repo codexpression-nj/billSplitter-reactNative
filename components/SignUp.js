@@ -7,6 +7,10 @@ const SignUp = () => {
     return (
         <View style={styles.container}>
             <Text>SignUp</Text>
+            <TextInput style={styles.input} keyboardType='numeric' placeholder='Email' />
+            <TextInput style={styles.input} keyboardType='numeric' placeholder='Name' />
+            <TextInput style={styles.input} keyboardType='numeric' placeholder='Password' />
+   
         </View>
     );
 };
