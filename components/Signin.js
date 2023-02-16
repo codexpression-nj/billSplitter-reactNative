@@ -10,8 +10,15 @@ const SignIn = () => {
             <TextInput style={styles.input} keyboardType='numeric' placeholder='Email' />
             <TextInput style={styles.input} keyboardType='numeric' placeholder='Password' />
             <TouchableOpacity style={styles.btn}>
-                <Text>Sign in</Text>
+                <Text style={{fontWeight:'bold'}}>Sign In</Text>
             </TouchableOpacity>
+            <View style={{display:'flex', flexDirection:'row'}}> 
+            <Text style={{color:'white'}}>Don't have an account?  </Text>
+            <TouchableOpacity>
+                <Text style={{textDecorationLine:'underline',color:'white'}}>Sign up</Text>
+            </TouchableOpacity>
+            </View>
+           
         </View>
     );
 };
