@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
 // create a component
-const SignIn = () => {
+const SignIn = ({navigation}) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Sign In</Text>
@@ -15,7 +15,7 @@ const SignIn = () => {
             <View style={{display:'flex', flexDirection:'row'}}> 
             <Text style={{color:'white'}}>Don't have an account?  </Text>
             <TouchableOpacity>
-                <Text style={{textDecorationLine:'underline',color:'white'}}>Sign up</Text>
+                <Text style={{textDecorationLine:'underline',color:'white'}} onPress={()=> navigation.navigate('signUp')}>Sign up</Text>
             </TouchableOpacity>
             </View>
            
