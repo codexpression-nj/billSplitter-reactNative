@@ -9,13 +9,13 @@ const SignIn = ({navigation}) => {
             <Text style={styles.title}>Sign In</Text>
             <TextInput style={styles.input} keyboardType='numeric' placeholder='Email' />
             <TextInput style={styles.input} keyboardType='numeric' placeholder='Password' />
-            <TouchableOpacity style={styles.btn}>
+            <TouchableOpacity style={styles.btn} onPress={()=> navigation.navigate('NewBill')}>
                 <Text style={{fontWeight:'bold'}}>Sign In</Text>
             </TouchableOpacity>
             <View style={{display:'flex', flexDirection:'row'}}> 
             <Text style={{color:'white'}}>Don't have an account?  </Text>
             <TouchableOpacity>
-                <Text style={{textDecorationLine:'underline',color:'white'}} onPress={()=> navigation.navigate('signUp')}>Sign up</Text>
+                <Text style={{textDecorationLine:'underline',color:'white'}} onPress={()=> navigation.navigate('signup')}>Sign up</Text>
             </TouchableOpacity>
             </View>
            

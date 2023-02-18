@@ -1,21 +1,21 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, TextInput,TouchableOpacity ,Text, StyleSheet } from 'react-native';
 
 // create a component
-const SignUp = () => {
+const SignUp = ({navigation}) => {
     return (
         <View style={styles.container}>
              <Text style={styles.title}>Sign Up</Text>
             <TextInput style={styles.input} keyboardType='numeric' placeholder='Email' />
             <TextInput style={styles.input} keyboardType='numeric' placeholder='Password' />
-            <TouchableOpacity style={styles.btn}>
-                <Text style={{fontWeight:'bold'}}>Sign In</Text>
+            <TouchableOpacity style={styles.btn} onPress={()=> navigation.navigate('NewBill')}>
+                <Text style={{fontWeight:'bold'}}>Sign Up</Text>
             </TouchableOpacity>
             <View style={{display:'flex', flexDirection:'row'}}> 
             <Text style={{color:'white'}}>Have a account?  </Text>
-            <TouchableOpacity>
-                <Text style={{textDecorationLine:'underline',color:'white'}}>Sign up</Text>
+            <TouchableOpacity onPress={()=> navigation.navigate('signIn')}>
+                <Text style={{textDecorationLine:'underline',color:'white'}}>Sign In</Text>
             </TouchableOpacity>
             </View>
         </View>
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2c3e50',
+        backgroundColor: '#085EB9',
     },
     inputContainer: {
         // flex: 1,
