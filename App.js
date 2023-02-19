@@ -6,6 +6,7 @@ import NewBill from './components/NewBill';
 import SignUp from './components/SignUp';
 import SignIn from './components/Signin';
 import OnBoarding from './components/Onboard';
+import Prompt from './components/Prompt';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
       <Stack.Screen name="signup" component={SignUp} options={{headerShown:false}}/>
       <Stack.Screen name="signIn" component={SignIn} options={{headerShown:false}}/>
       <Stack.Screen name="onBoard" component={OnBoarding} options={{headerShown:false}}/>
+      <Stack.Screen name="prompt" component={Prompt} options={{headerShown:false}}/>
     </Stack.Navigator>
   </NavigationContainer>
   );
