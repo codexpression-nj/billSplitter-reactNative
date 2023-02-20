@@ -1,33 +1,34 @@
 //import liraries
 import { LinearGradient } from 'expo-linear-gradient';
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 // create a component
 const Prompt = ({ navigation }) => {
+    // const [billType, setBillType] = useState('')
+
     return (
         <LinearGradient
-        style={styles.container}
-    // Button Linear Gradient
-    colors={['#085EB9','#0093E9', '#80D0C7']}
-    >
-        <View >
-            {/* <Text style={styles.title}>Hi,</Text> */}
-            <Text style={styles.title}>Hi, How would you like to split your bill today</Text>
-            <View style={styles.btns}>
-                <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('NewBill')} >
-                    <Text style={styles.text}>EQUALLY</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.btn}>
-                    <Text style={styles.text}>CUSTOM</Text>
-                </TouchableOpacity>
-            </View>
+            style={styles.container}
+            // Button Linear Gradient
+            colors={['#085EB9', '#0093E9', '#80D0C7']}
+        >
+            <View >
+                {/* <Text style={styles.title}>Hi,</Text> */}
+                <Text style={styles.title}>Hi, How would you like to split your bill today</Text>
+                <View style={styles.btns}>
+                    <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('NewBill',{billType:'equally'})} >
+                        <Text style={styles.text}>EQUALLY</Text>
+                    </TouchableOpacity >
+                    <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('NewBill',{billType:'custom'})}>
+                        <Text style={styles.text}>CUSTOM</Text>
+                    </TouchableOpacity>
+                </View>
 
-        </View>
+            </View>
         </LinearGradient>
     );
 };
-
 // define your styles
 const styles = StyleSheet.create({
     container: {
@@ -62,15 +63,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         // marginBottom: 10
     },
-    btns:{
+    btns: {
         alignItems: 'center',
         justifyContent: 'center',
         // marginBottom: 10,
-        marginBottom:60,
+        marginBottom: 60,
         // width: '100%'
     },
-    text:{
-        color:'#085EB9',
+    text: {
+        color: '#085EB9',
         fontWeight: '300',
 
     }
