@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Pressable, Image } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Pressable, Image, SafeAreaView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import Members, { membersData } from './Member';
 import Tip from './Tip';
@@ -10,10 +10,10 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Slider from '@react-native-community/slider';
 
 // create a component
-const NewBill = ({navigation, route}) => {
+const NewBill = ({ navigation, route }) => {
     // const { billType } = route.params;
     // console.log(billType);
-    const {billType} = route.params;
+    const { billType } = route.params;
     console.log(billType);
 
     const [friends, setFriends] = useState(membersData)
@@ -114,7 +114,7 @@ const NewBill = ({navigation, route}) => {
     }
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <LinearGradient
                 style={styles.totalResults}
                 // Button Linear Gradient
@@ -176,43 +176,47 @@ const NewBill = ({navigation, route}) => {
                         </View>
                     ))}
                 </View>
-            
-                <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginBottom: 16 }}>
-                    {selectedMembers.map((members, index) => (
+                {billType === 'equally'
+                    ? <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginBottom: 16 }}>
+                        {selectedMembers.map((members, index) => (
 
-                        <Image key={members.uid} source={members.avatar}
-                            style={styles.image}
-                            resizeMode="cover" />
-                    ))}
-                </View>
-                <View >
+                            <Image key={members.uid} source={members.avatar}
+                                style={styles.image}
+                                resizeMode="cover" />
+                        ))}
+                    </View>
+                    : <View >
 
-                    {selectedMembers.map((members, index) => (
-                        <View style={{ display: 'flex', backgroundColor: '#dedede', marginBottom: 5 }}>
+                        {selectedMembers.map((members, index) => (
+                            <View key={members.uid} style={{ display: 'flex', marginBottom: 5, borderRadius: 10, borderWidth: 1, borderColor: '#F2F3F5' }}>
 
-                            <View style={styles.friends}>
-                                <Image key={members.uid} source={members.avatar}
-                                    style={styles.image}
-                                    resizeMode="cover" />
-                                <View style={{ justifyContent: "space-between" }}>
-                                    <Text style={{ marginLeft: 20 }}>{members.username}</Text>
-                                    <Text style={{ marginLeft: 20 }}>R {members.shareAmnt}</Text>
+                                <View style={styles.friends}>
+                                    <Image source={members.avatar}
+                                        style={styles.image}
+                                        resizeMode="cover" />
+                                    <View style={{ justifyContent: "space-between" }}>
+                                        <Text style={{ marginLeft: 20 }}>{members.username}</Text>
+                                        <Text style={{ marginLeft: 20 }}>R {members.shareAmnt}</Text>
+                                    </View>
+
                                 </View>
 
+                                <Slider
+                                    style={{ width: '100%', height: 40 }}
+                                    minimumValue={0}
+                                    maximumValue={100}
+                                    minimumTrackTintColor="#085EB9"
+                                    maximumTrackTintColor="#085EB9"
+                                    onValueChange={(value) => calShareBill(members.uid, value)}
+                                />
                             </View>
 
-                            <Slider
-                                style={{ width: '100%', height: 40 }}
-                                minimumValue={0}
-                                maximumValue={100}
-                                minimumTrackTintColor="#085EB9"
-                                maximumTrackTintColor="#085EB9"
-                                onValueChange={(value) => calShareBill(members.uid, value)}
-                            />
-                        </View>
+                        ))}
+                    </View>
 
-                    ))}
-                </View>
+                }
+
+
                 <Text style={styles.text}>AMOUNT</Text>
                 <TextInput style={styles.input} keyboardType='numeric' placeholder='enter total amount' onChangeText={(text) => { setAmount(Number(text)), calculatebill(text) }} />
                 <Text style={styles.text}>TIP</Text>
@@ -227,7 +231,7 @@ const NewBill = ({navigation, route}) => {
 
 
 
-        </View>
+        </SafeAreaView>
     );
 };
 
