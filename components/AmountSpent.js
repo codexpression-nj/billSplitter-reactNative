@@ -1,13 +1,24 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, TextInput, StyleSheet,TouchableOpacity } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 // create a component
-const AmountSpent = () => {
+const AmountSpent = ({navigation}) => {
     return (
-        <View style={styles.container}>
-            <Text>AmountSpent</Text>
-        </View>
+        <LinearGradient
+        style={styles.container}
+        // Button Linear Gradient
+        colors={['#085EB9', '#0093E9', '#80D0C7']}
+    >
+        {/* <View > */}
+            <Text style={styles.title}>what is the total amount spent </Text>
+            <TextInput style={styles.input} keyboardType='numeric' placeholder='Amount' />
+            <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('NewBill',{billType:'custom'})}>
+                        <Text style={styles.text}>Proceed</Text>
+                    </TouchableOpacity>
+        {/* </View> */}
+        </LinearGradient>
     );
 };
 
@@ -19,6 +30,31 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#085EB9',
         width: '100%',
+    },
+    input: {
+        width: '80%',
+        borderRadius: 5,
+        borderWidth: 1,
+        padding: 12,
+        marginBottom: 24,
+        borderColor: '#E5E9ED',
+        color: 'white'
+    },
+    title: {
+        color: 'white',
+        fontSize: 34,
+        margin: 30,
+        fontWeight: 'bold'
+    },
+    btn: {
+        width: '90%',
+        height: 40,
+        borderRadius: 6,
+        backgroundColor: 'white',
+        margin: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        // marginBottom: 10
     },
 });
 

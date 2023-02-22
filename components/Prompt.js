@@ -20,7 +20,7 @@ const Prompt = ({ navigation }) => {
                     <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('NewBill',{billType:'equally'})} >
                         <Text style={styles.text}>EQUALLY</Text>
                     </TouchableOpacity >
-                    <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('NewBill',{billType:'custom'})}>
+                    <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('billAmount',{billType:'custom'})}>
                         <Text style={styles.text}>CUSTOM</Text>
                     </TouchableOpacity>
                 </View>

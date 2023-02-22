@@ -7,6 +7,7 @@ import SignUp from './components/SignUp';
 import SignIn from './components/Signin';
 import OnBoarding from './components/Onboard';
 import Prompt from './components/Prompt';
+import AmountSpent from './components/AmountSpent';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
       <Stack.Screen name="signIn" component={SignIn} options={{headerShown:false}}/>
       <Stack.Screen name="onBoard" component={OnBoarding} options={{headerShown:false}}/>
       <Stack.Screen name="prompt" component={Prompt} options={{headerShown:false}}/>
+      <Stack.Screen name="billAmount" component={AmountSpent} options={{headerShown:false}}/>
     </Stack.Navigator>
   </NavigationContainer>
   );
