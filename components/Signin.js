@@ -9,7 +9,7 @@ const SignIn = ({navigation}) => {
             <Text style={styles.title}>Sign In</Text>
             {/* <Text style={styles.text}>EMAIL</Text> */}
             <TextInput style={styles.input} keyboardType='numeric' placeholder='Email' />
-            <TextInput style={styles.input} keyboardType='numeric' placeholder='Password' />
+            <TextInput style={styles.input} keyboardType='password' placeholder='Password' />
             <TouchableOpacity style={styles.btn} onPress={()=> navigation.navigate('prompt')}>
                 <Text style={{fontWeight:'bold',color:'white'}}>Sign In</Text>
             </TouchableOpacity>

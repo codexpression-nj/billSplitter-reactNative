@@ -24,6 +24,9 @@ const NewBill = ({ navigation, route }) => {
     const [amount, setAmount] = useState(0)
     const [tip, setTip] = useState(0)
     const [tipPerPerson, setTipPerperson] = useState(0)
+    // if (billType == 'custom') {
+    //     setTotalPerperson = 
+    // }
     const [totalPerPerson, setTotalPerperson] = useState(0)
     const tipPercentage = [10, 20, 30, 40, 50]
     const [selectedTip, setSelectedTip] = useState(0)
@@ -177,7 +180,9 @@ const NewBill = ({ navigation, route }) => {
                     ))}
                 </View>
                 {billType === 'equally'
-                    ? <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginBottom: 16 }}>
+
+                    ? <>
+                    <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginBottom: 16 }}>
                         {selectedMembers.map((members, index) => (
 
                             <Image key={members.uid} source={members.avatar}
@@ -185,6 +190,11 @@ const NewBill = ({ navigation, route }) => {
                                 resizeMode="cover" />
                         ))}
                     </View>
+                      <Text style={styles.text}>AMOUNT</Text>
+                      <TextInput style={styles.input} keyboardType='numeric' placeholder='enter total amount' onChangeText={(text) => { setAmount(Number(text)), calculatebill(text) }} />
+                     
+                    </>
+                    
                     : <View >
 
                         {selectedMembers.map((members, index) => (
@@ -217,8 +227,7 @@ const NewBill = ({ navigation, route }) => {
                 }
 
 
-                <Text style={styles.text}>AMOUNT</Text>
-                <TextInput style={styles.input} keyboardType='numeric' placeholder='enter total amount' onChangeText={(text) => { setAmount(Number(text)), calculatebill(text) }} />
+              
                 <Text style={styles.text}>TIP</Text>
                 <View style={{ flexDirection: "row" }}>
                     {
