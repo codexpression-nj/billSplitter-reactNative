@@ -33,8 +33,7 @@ const OnBoarding = () => {
             image: (
               <Image
               style={{width: 272,height: 372,resizeMode: 'cover'}}
-                source={require('../assets/onBoard1.png')}
-                className="w-72 h-72 object-contain"
+                source={require('../assets/onBoard3.png')}
               />
             ),
             title: "Order",
@@ -42,11 +41,11 @@ const OnBoarding = () => {
             "add menu price on the app"
           },
           {
-            backgroundColor: "#085EB9",
+            backgroundColor: "#ffffff",
             image: (
               <Image
               style={{width: 272,height: 372,resizeMode: 'cover'}}
-                source= {require('../assets/onBoard3.png')}
+                source= {require('../assets/onBoard1.png')}
              
                 // className="w-72 h-72 object-contain"
               />

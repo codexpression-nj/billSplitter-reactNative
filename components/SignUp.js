@@ -10,12 +10,12 @@ const SignUp = ({navigation}) => {
             <TextInput style={styles.input} keyboardType='numeric' placeholder='Email' />
             <TextInput style={styles.input} keyboardType='numeric' placeholder='Password' />
             <TouchableOpacity style={styles.btn} onPress={()=> navigation.navigate('NewBill')}>
-                <Text style={{fontWeight:'bold'}}>Sign Up</Text>
+                <Text style={{fontWeight:'bold',color:'white'}}>Sign Up</Text>
             </TouchableOpacity>
             <View style={{display:'flex', flexDirection:'row'}}> 
-            <Text style={{color:'white'}}>Have a account?  </Text>
+            <Text style={{color:'#085EB9'}}>Have a account?  </Text>
             <TouchableOpacity onPress={()=> navigation.navigate('signIn')}>
-                <Text style={{textDecorationLine:'underline',color:'white'}}>Sign In</Text>
+                <Text style={{textDecorationLine:'underline',color:'#085EB9'}}>Sign In</Text>
             </TouchableOpacity>
             </View>
         </View>
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#085EB9',
+        // backgroundColor: '#085EB9',
     },
     inputContainer: {
         // flex: 1,
@@ -41,12 +41,12 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 12,
         marginBottom: 24,
-        borderColor: '#E5E9ED',
+        borderColor: '#dedede',
         color:'white'
     },
     title:{
         fontSize:28,
-        color:'white',
+        color:'#085EB9',
         fontWeight:'bold',
         marginBottom:80
     },
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         margin:5,
         padding:15,
         width: '80%',
-        backgroundColor:'white',
+        backgroundColor:'#085EB9',
         // height: 30,
         alignItems: 'center',
         justifyContent: 'center',
