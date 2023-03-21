@@ -9,7 +9,7 @@ const SignUp = ({navigation}) => {
              <Text style={styles.title}>Sign Up</Text>
             <TextInput style={styles.input} keyboardType='numeric' placeholder='Email' />
             <TextInput style={styles.input} keyboardType='numeric' placeholder='Password' />
-            <TouchableOpacity style={styles.btn} onPress={()=> navigation.navigate('NewBill')}>
+            <TouchableOpacity style={styles.btn} onPress={()=> navigation.navigate('promt')}>
                 <Text style={{fontWeight:'bold',color:'white'}}>Sign Up</Text>
             </TouchableOpacity>
             <View style={{display:'flex', flexDirection:'row'}}> 

@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
     text: {
         color: '#085EB9',
         fontWeight: '300',
-
     }
 });
 

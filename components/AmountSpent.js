@@ -56,6 +56,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         // marginBottom: 10
     },
+    text: {
+        color: '#085EB9',
+        fontWeight: '300',
+    }
 });
 
 //make this component available to the app
