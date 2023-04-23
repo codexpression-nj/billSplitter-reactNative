@@ -7,6 +7,7 @@ const SignUp = ({navigation}) => {
     return (
         <View style={styles.container}>
              <Text style={styles.title}>Sign Up</Text>
+            <TextInput style={styles.input}  placeholder='Name' />
             <TextInput style={styles.input} keyboardType='numeric' placeholder='Email' />
             <TextInput style={styles.input} keyboardType='numeric' placeholder='Password' />
             <TouchableOpacity style={styles.btn} onPress={()=> navigation.navigate('promt')}>
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        // backgroundColor: '#085EB9',
+        backgroundColor: 'white',
     },
     inputContainer: {
         // flex: 1,
